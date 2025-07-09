@@ -1,0 +1,129 @@
+#!/bin/bash
+# Return a description of the given interface type.
+# Defined from The Address Resolution Protocol, hardware types.
+# Common types:
+# 	1 (Ethernet)
+# 	6 (Token Ring)
+# 	24 (InfiniBand)
+# 	801 (Wi-Fi)
+# 	772 (Loopback Device)
+
+type=$1
+
+if [ $type = 0 ]; then
+	echo "NETROM (Network/Radio packet protocol)"
+elif [ $type = 1 ]; then
+	echo "ETHER (Ethernet (10/100/1000) Mbps)"
+elif [ $type = 2 ]; then
+	echo "EETHER (Experimental Ethernet)"
+elif [ $type = 3 ]; then
+	echo "AX25 (AX.25 Level 2)"
+elif [ $type = 4 ]; then
+	echo "PRONET (Proteon ProNET token ring)"
+elif [ $type = 5 ]; then
+	echo "CHAOS (Chaosnet)"
+elif [ $type = 6 ]; then
+	echo "IEEE 802 (IEEE 802.2 : Ethernet, token ring, etc.)"
+elif [ $type = 7 ]; then
+	echo "ARCNET (Attached Resource Computer NETwork)"
+elif [ $type = 8 ]; then
+	echo "APPLETLK (AppleTalk)"
+elif [ $type = 15 ]; then
+	echo "DLCI (Frame Relay Data Link Connection Identifier)"
+elif [ $type = 19 ]; then
+	echo "ATM (Asyncronous Transfer Mode)"
+elif [ $type = 23 ]; then
+	echo "METRICOM (Metricom STarmode Radio IP : proprietary wireless)"
+elif [ $type = 24 ]; then
+	echo "IEEE 1394 (FireWire)"
+elif [ $type = 27 ]; then
+	echo "EUI64 (EUI-64)"
+elif [ $type = 32 ]; then
+	echo "INFINIBAND (InfiniBand)"
+elif [ $type = 256 ]; then
+	echo "SLIP (Serial Line IP)"
+elif [ $type = 257 ]; then
+	echo "CSLIP (Compressed Serial Line IP)"
+elif [ $type = 258 ]; then
+	echo "SLIP6 (Serial Line IPv6)"
+elif [ $type = 259 ]; then
+	echo "CSLIP6 (Compressed Serial Line IPv6)"
+elif [ $type = 260 ]; then
+	echo "RSRVD (Reserved)"
+elif [ $type = 264 ]; then
+	echo "ADAPT (Network Adaptor)"
+elif [ $type = 270 ]; then
+	echo "ROSE (Radio Operators' Service Entity : ameteur packet radio)"
+elif [ $type = 271 ]; then
+	echo "X25 (X.25)"
+elif [ $type = 272 ]; then
+	echo "HWX25 (X.25 with hardware interface)"
+elif [ $type = 512 ]; then
+	echo "PPP (Point-to-Point Protocol)"
+elif [ $type = 513 ]; then
+	echo "CISCO/HDLC (CISCO High-level Data Link Control)"
+elif [ $type = 516 ]; then
+	echo "LAPB (Link Access Procedure, Balanced)"
+elif [ $type = 517 ]; then
+	echo "DDCMP (Digital Data Communications Message Protocol)"
+elif [ $type = 518 ]; then
+	echo "RAWHDLC (Raw High-level Data Link Control)"
+elif [ $type = 768 ]; then
+	echo "TUNNEL (IPv4-in-IPv4 encapsulated tunneling)"
+elif [ $type = 769 ]; then
+	echo "TUNNEL6 (IPv6-in-IPv4 encapsulated tunneling)"
+elif [ $type = 770 ]; then
+	echo "FRAD (Frame Relay Access Device)"
+elif [ $type = 771 ]; then
+	echo "SKIP (Simple Key management for Internal Protocols IPv6)"
+elif [ $type = 772 ]; then
+	echo "LOOPBACK (Loopback device)"
+elif [ $type = 773 ]; then
+	echo "LOCALTALK (LocalTalk device)"
+elif [ $type = 774 ]; then
+	echo "FDDI (Fiber Distributed Data Interface)"
+elif [ $type = 775 ]; then
+	echo "BIF (AP1000 Backplane Interface)"
+elif [ $type = 776 ]; then
+	echo "SIT (IPv6-in-IPv4 Simple Internet Transition tunneling)"
+elif [ $type = 777 ]; then
+	echo "IPDDP (IP-over-Datagram Delivery Protocol : AppleTalk)"
+elif [ $ype = 778 ]; then
+	echo "IPGRE (Generic Routing Encapsulation tunneling over IP)"
+elif [ $type = 779 ]; then
+	echo "PIMREG (Protocol Independent Multicast SM register interface)"
+elif [ $type = 780 ]; then
+	echo "HIPPI (HIgh-Performance Parallel Interface)"
+elif [ $type = 781 ]; then
+	echo "ASH (Ash Technology)"
+elif [ $type = 782 ]; then
+	echo "ECONET (Acorn Econet)"
+elif [ $type = 783 ]; then
+	echo "IRDA (Linux-IrDA)"
+elif [ $type = 784 ]; then
+	echo "FCPP (Point-to-Point fiber channel)"
+elif [ $type = 785 ]; then
+	echo "FCAL (Fiber channel arbitrated loop)"
+elif [ $type = 786 ]; then
+	echo "FCPL (Fiber channel public loop)"
+elif [ $type = 787 ]; then
+	echo "FCFABRIC (Fiber channel fabric)"
+elif [ $type = 800 ]; then
+	echo "IEEEE802_TR (IEEE 802.5 : Token Ring)"
+elif [ $type = 801 ]; then
+	echo "IEEE80211 (IEEE 802.11 : Wireless LAN and Wi-Fi)"
+elif [ $type = 802 ]; then
+	echo "IEEE80211_PRISM (IEEE 802.11 : Wireless LAN and Wi-Fi : Prism2 header)"
+elif [ $type = 803 ]; then
+	echo "IEEE80211_RADIOTAP (IEEE 802.11 : Wireless LAN and Wi-Fi : radiotap header)"
+elif [ $type = 804 ]; then
+	echo "IEEE802154 (IEEE 802.15.4 : low-rate Wireless PAN header)"
+elif [ $type = 805 ]; then
+	echo "IEEE802154_PHY (IEEE 802.15.4 : low-rate Wireless PAN PHY header)"
+elif [ $type = 0xFFFF ]; then
+	echo "VOID (Unknown or no hardware address)"
+elif [ $type = 0xFFFE ]; then
+	echo "NONE (No address resolution protocol)"
+else
+	echo "invalid type: '$type'"
+fi

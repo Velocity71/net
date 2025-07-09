@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Starting net 1.0"
+if [ $1 == connect ]; then
+	sh /usr/local/bin/net/connect
+fi
+
+echo "exiting net"

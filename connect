@@ -1,0 +1,37 @@
+#!/bin/bash
+
+echo "Obtaining network interfaces through iproute2..."
+
+# Declare an array for network interfaces
+declare -A net_interfaces
+
+# Identify all interfaces. Seach specifically for Ethernet and Wi-Fi
+for interface in $(ip -o link show | awk -F': ' '{print $2}'); do
+
+	# Get interface type.
+	type=$(cat /sys/class/net/$interface/type)
+	
+	# Add the interface to net_interfaces if type 1 (Ethernet) or 801 (Wi-Fi).
+	if [ $type == 1 ] || [ $type == 801 ]; then
+		net_interfaces[$interface]=$type
+	fi
+
+	# Print interface and type for user to read. See 'identify_interface' for more details.
+	echo "Found interface $interface of type $type : $(sh /usr/local/bin/net/identify-interface $type)"
+done
+
+# Attempt to connect through an interface
+for interface in ${!net_interfaces[@]}; do
+	
+	# use dhcpcd to connect through Ethernet
+	if [ ${net_interfaces[$interface]} == 1 ]; then
+		echo "Attempting to connect to Ethernet interface $interface."
+		
+		sudo dhcpcd $interface
+
+		if [ $? == 0 ]; then
+			echo "Successfully connected through $interface."
+			break
+		fi
+	fi
+done
